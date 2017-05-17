@@ -1,4 +1,6 @@
 ---
+ansible:
+  playbook: test.yml
 dependency:
   name: galaxy
 driver:
@@ -11,7 +13,6 @@ docker:
       image: gahancorpcfo/ubuntu-xenial-ansible 
       image_version: latest
       hostname: tower
-      playbook: test.yml
 verifier:
   name: testinfra
 ...
