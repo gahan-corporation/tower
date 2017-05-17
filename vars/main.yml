@@ -1,2 +1,5 @@
 ---
-# vars file for tower
+pg_password: 'notgod'
+admin_password: 'alsonotgod'
+...
+# vim: ft=ansible: 
