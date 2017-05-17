@@ -6,10 +6,12 @@ driver:
 docker:
   containers:
     - name: tower 
-      image: gahancorpcfo/ubuntu-xenial-ansible 
-      image_version: latest
       ansible_groups:
         - ansible 
+      image: gahancorpcfo/ubuntu-xenial-ansible 
+      image_version: latest
+      hostname: tower
+      playbook: test.yml
 verifier:
   name: testinfra
 ...
