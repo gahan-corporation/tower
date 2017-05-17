@@ -1,5 +1,6 @@
 ---
 pg_password: 'notgod'
 admin_password: 'alsonotgod'
+rabbitmq_password: 'rabbit'
 ...
 # vim: ft=ansible: 
