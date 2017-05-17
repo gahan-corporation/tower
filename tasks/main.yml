@@ -1,4 +1,28 @@
 ---
+- name: 'Make sure root user has ssh keys.'
+  user:
+    name: root
+    generate_ssh_key: yes
+    ssh_key_type: rsa
+    ssh_key_bits: 8192
+- name: "Add the new public key to the user's authorized list."
+  authorized_key:
+    user: root
+    state: present
+    key: "{{ lookup('file','/root/.ssh/id_rsa.pub') }}"
+- name: 'Install postgres.'
+  apt:
+    name: "{{ item }}" 
+    state: present
+    update_cache: yes 
+  with_items:
+  - postgresql-9.5
+  - postgresql-server-dev-all
+- name: 'Update the inventory with a group for Tower.'
+  lineinfile:
+    dest: /etc/ansible/hosts
+    line: [tower]
+    insertbefore: localhost ansible_connection=local
 - name: 'Unarchive the ansible tower demo.'
   unarchive:
     src: https://s3-us-west-2.amazonaws.com/archive.gahan-corporation.com/ansible-tower-setup-latest.tar.gz 
