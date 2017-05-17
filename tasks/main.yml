@@ -22,7 +22,7 @@
 - name: 'Update the inventory with a group for Tower.'
   lineinfile:
     dest: /etc/ansible/hosts
-    line: [tower]
+    line: '[tower]'
     insertbefore: localhost ansible_connection=local
     state: present
 - name: 'Unarchive the ansible tower demo.'
