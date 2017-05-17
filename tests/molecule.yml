@@ -1,0 +1,16 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+docker:
+  containers:
+    - name: tower 
+      image: gahancorpcfo/ubuntu-xenial-ansible 
+      image_version: latest
+      ansible_groups:
+        - ansible 
+verifier:
+  name: testinfra
+...
+# vim: ft=ansible:
