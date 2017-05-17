@@ -3,9 +3,9 @@ sudo: required
 services:
 - docker
 script:
-- cd tests
-- docker-compose build
-- docker-compose up -d 
+- pip install molecule 
+- cd tests 
+- molecule test 
 notifications:
     webhooks: 'https://galaxy.ansible.com/api/v1/notifications/'
 ...
