@@ -3,7 +3,7 @@ sudo: required
 services:
 - docker
 script:
-- pip install molecule 
+- pip install molecule docker 
 - cd tests 
 - molecule test 
 notifications:
