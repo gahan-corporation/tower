@@ -5,11 +5,12 @@
     generate_ssh_key: yes
     ssh_key_type: rsa
     ssh_key_bits: 8192
+  register: keys
 - name: "Add the new public key to the user's authorized list."
   authorized_key:
     user: root
     state: present
-    key: "{{ lookup('file','/root/.ssh/id_rsa.pub') }}"
+    key: "{{ keys.ssh_public_key }}" 
 - name: 'Install postgres.'
   apt:
     name: "{{ item }}" 
@@ -19,14 +20,15 @@
   - postgresql-9.5
   - postgresql-server-dev-all
 - name: 'Update the inventory with a group for Tower.'
-  lineinfile:
+  template:
     dest: /etc/ansible/hosts
-    line: [tower]
-    insertbefore: localhost ansible_connection=local
+    src: hosts
 - name: 'Unarchive the ansible tower demo.'
   unarchive:
     src: https://s3-us-west-2.amazonaws.com/archive.gahan-corporation.com/ansible-tower-setup-latest.tar.gz 
     dest: /tmp
     copy: no
+#- name: 'Run the install playbook.'
+#  command: ansible-playbook /tmp/ansible-tower-setup-3.1.3/install.yml
 ...
 # vim: ft=ansible: 
