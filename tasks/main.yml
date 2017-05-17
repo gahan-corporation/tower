@@ -7,13 +7,12 @@
     ssh_key_bits: 8192
   register: keys
 - debug:
-    var: keys
+    var: keys.ssh_public_key
 - name: "Add the new public key to the user's authorized list."
   authorized_key:
     user: root
     state: present
-    key: "{{ lookup('file','/root/.ssh/id_rsa.pub') }}"
-  delegate_to: "{{ inventory_hostname }}"
+    key: "{{ keys.ssh_public_key }}" 
 - name: 'Install postgres.'
   apt:
     name: "{{ item }}" 
