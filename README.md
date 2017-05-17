@@ -25,6 +25,7 @@ Example Playbook
 - hosts: servers
   roles:
      - { role: gahan-corporation.tower }
+```
 
 License
 -------
