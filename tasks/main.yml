@@ -7,6 +7,11 @@
   with_items:
   - postgresql-9.5
   - postgresql-server-dev-all
+- name: 'Update the inventory with a group for Tower.'
+  lineinfile:
+    dest: /etc/ansible/hosts
+    line: [tower]
+    insertbefore: localhost ansible_connection=local
 - name: 'Unarchive the ansible tower demo.'
   unarchive:
     src: https://s3-us-west-2.amazonaws.com/archive.gahan-corporation.com/ansible-tower-setup-latest.tar.gz 
