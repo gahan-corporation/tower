@@ -1,0 +1,12 @@
+---
+sudo: required
+services:
+- docker
+script:
+- cd tests
+- docker-compose build
+- docker-compose up -d 
+notifications:
+    webhooks: 'https://galaxy.ansible.com/api/v1/notifications/'
+...
+# vim: ft=ansible:
