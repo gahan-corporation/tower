@@ -7,10 +7,10 @@ driver:
   name: docker
 docker:
   containers:
-    - name: tower 
+    - name: tower
       ansible_groups:
-        - ansible 
-      image: gahancorpcfo/ubuntu-xenial-ansible 
+        - ansible
+      image: gahancorpcfo/ubuntu-xenial-ansible
       image_version: latest
       hostname: tower
 verifier:
