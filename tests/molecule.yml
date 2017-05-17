@@ -13,12 +13,12 @@ docker:
       image: gahancorpcfo/ubuntu-xenial-ansible
       image_version: latest
       hostname: tower
-    - name: pg
-      ansible_groups:
-        - db
-      image: gahancorpcfo/ubuntu-xenial-ansible
-      image_version: latest
-      hostname: tower
+    #- name: pg
+    #  ansible_groups:
+    #    - db
+    #  image: gahancorpcfo/ubuntu-xenial-ansible
+    #  image_version: latest
+    #  hostname: tower
 verifier:
   name: testinfra
   options:
