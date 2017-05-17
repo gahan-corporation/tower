@@ -16,8 +16,8 @@ docker:
 verifier:
   name: testinfra
   options:
-    junitxml: report.xml    
+    junitxml: report.xml
     connection: docker
-    hosts: tower 
+    hosts: tower
 ...
 # vim: ft=ansible:
