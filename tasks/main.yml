@@ -10,6 +10,7 @@
     user: root
     state: present
     key: "{{ lookup('file','/root/.ssh/id_rsa.pub') }}"
+  delegate_to: "{{ inventory_hostname }}"
 - name: 'Install postgres.'
   apt:
     name: "{{ item }}" 
