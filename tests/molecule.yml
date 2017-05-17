@@ -1,0 +1,19 @@
+---
+ansible:
+  playbook: test.yml
+dependency:
+  name: galaxy
+driver:
+  name: docker
+docker:
+  containers:
+    - name: tower
+      ansible_groups:
+        - ansible
+      image: gahancorpcfo/ubuntu-xenial-ansible
+      image_version: latest
+      hostname: tower
+verifier:
+  name: testinfra
+...
+# vim: ft=ansible:
