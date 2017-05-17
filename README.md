@@ -36,4 +36,4 @@ GPL-3.0
 Author Information
 ------------------
 
-Authored by A. H. Laughlin for the [Gahan Corporation](https://gahan-corporation.com)
+Authored by A. H. Laughlin for the [Gahan Corporation](https://gahan-corporation.com).
