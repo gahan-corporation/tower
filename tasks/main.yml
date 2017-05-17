@@ -6,8 +6,6 @@
     ssh_key_type: rsa
     ssh_key_bits: 8192
   register: keys
-- debug:
-    var: keys.ssh_public_key
 - name: "Add the new public key to the user's authorized list."
   authorized_key:
     user: root
