@@ -33,6 +33,14 @@
   copy:
     src: Ubuntu.yml
     dest: /tmp/ansible-tower-setup-3.1.3/roles/postgres/vars/Ubuntu.yml
+- name: 'Make the vars directory for rabbitmq.'
+  file:
+    dest: /tmp/ansible-tower-setup-3.1.3/roles/rabbitmq/vars
+    state: directory
+- name: 'Add the required variables.'
+  copy:
+    src: rabbitmq.yml
+    dest: /tmp/ansible-tower-setup-3.1.3/roles/rabbitmq/vars/main.yml
 - name: 'Run the install playbook.'
   command: ansible-playbook /tmp/ansible-tower-setup-3.1.3/install.yml --extra-vars "postgres_username=awx postgres_password=awx postgres_database=tower"
 ...

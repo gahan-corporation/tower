@@ -1,4 +1,5 @@
 ---
 rabbitmq_use_long_name: towermq
+rabbitmq_port: 8800
 ...
 # vim: ft=ansible:
