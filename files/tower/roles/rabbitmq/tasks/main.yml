@@ -39,7 +39,7 @@
 - name: start and enable the rabbitmq service
   service:
     name: rabbitmq-server
-    state: running
+    state: started 
     enabled: yes
 
 - name: wait for rabbitmq service to be running
