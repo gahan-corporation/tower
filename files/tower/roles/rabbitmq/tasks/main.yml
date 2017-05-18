@@ -93,3 +93,5 @@
 - name: Set rabbitmq administrator status
   shell: "rabbitmqctl set_user_tags {{ rabbitmq_username }} administrator"
   when: rabbitmq_enable_manager|bool
+...
+# vim: ft=ansible:
