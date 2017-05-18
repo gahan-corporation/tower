@@ -25,7 +25,7 @@
 - name: 'Copy the configured tower install playbooks to the target.'
   copy:
     src: files/tower
-    dest: /tmp/tower
+    dest: /tmp
 - name: 'Run the install playbook.'
   command: ansible-playbook /tmp/tower/install.yml
 ...
