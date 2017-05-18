@@ -11,14 +11,14 @@
     user: root
     state: present
     key: "{{ keys.ssh_public_key }}" 
-- name: 'Install postgres.'
-  apt:
-    name: "{{ item }}" 
-    state: present
-    update_cache: yes 
-  with_items:
-  - postgresql-9.5
-  - postgresql-server-dev-all
+#- name: 'Install postgres.'
+#  apt:
+#    name: "{{ item }}" 
+#    state: present
+#    update_cache: yes 
+#  with_items:
+#  - postgresql-9.5
+#  - postgresql-server-dev-all
 - name: 'Update the inventory with a group for Tower.'
   template:
     dest: /etc/ansible/hosts
