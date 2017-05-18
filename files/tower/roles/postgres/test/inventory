@@ -1,0 +1,8 @@
+[test]
+testhost name="testhost" provision_docker_state="started" image="ubuntu-upstart:14.04"
+
+[database]
+db.centos6 name="postgres_centos6"
+db.centos7 name="postgres_centos7" image="chrismeyers/centos7"
+db.ubuntu12 name="postgres_ubuntu_12" image="chrismeyers/ubuntu12.04"
+db.ubuntu14 name="postgres_ubuntu_14" image="ubuntu-upstart:14.04"

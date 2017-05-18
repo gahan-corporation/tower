@@ -1,0 +1,46 @@
+---
+# Tasks for configuring PostgreSQL server.
+
+- name: init postgresql (el-only)
+  command: '{{ pg_initdb_command }}'
+  args:
+    creates: /var/lib/pgsql/9.4/data/PG_VERSION
+  when: ansible_os_family == "RedHat"
+
+- name: Make sure PostgreSQL is started
+  service:
+    name: '{{ postgres_init_name }}'
+    state: started
+  register: postgresql_start
+
+- name: Wait for PostgreSQL to start if it wasnt
+  wait_for:
+    host: localhost
+    port: 5432
+  when: postgresql_start|changed
+
+- name: Check for the presence of a database backup that needs to be restored
+  stat:
+    path: /var/pg_backups/tower/tower-backup.db
+  register: tower_db_backup
+
+- name: Restore database backup if we created a dump in the migrate_postgres role
+  shell: psql < /var/pg_backups/tower/tower-backup.db
+  args:
+    executable: /bin/bash
+  become_user: postgres
+  become: True
+  when: tower_db_backup.stat.exists
+
+- name: Remove the Postgres data backup
+  file:
+    path: /var/pg_backups/tower/tower-backup.db
+    state: absent
+  when: tower_db_backup.stat.exists
+
+- name: Remove the Postgres data backup directory
+  file:
+    path: /var/pg_backups/tower/
+    state: absent
+  when: tower_db_backup.stat.exists
+  

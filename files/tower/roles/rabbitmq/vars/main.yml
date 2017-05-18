@@ -1,0 +1,6 @@
+---
+rabbitmq_use_long_name: towermq
+rabbitmq_port: 8800
+rabbitmq_cookie: really
+...
+# vim: ft=ansible:

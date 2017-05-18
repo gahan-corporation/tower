@@ -1,0 +1,32 @@
+- hosts: localhost
+  gather_facts: false
+  roles:
+    - role: provision_docker
+      provision_docker_inventory_group: "{{ groups['database'] | union(groups['test']) }}"
+
+- name: "Bring up system to run psql commands from"
+  hosts: test
+  tasks:
+    - name: Install postgres toooools
+      apt:
+        name: "{{ item }}"
+      with_items:
+        - python-psycopg2
+        - postgresql
+        - postgresql-contrib
+
+# Lay down epel repos
+- include: inc_epel.yml
+
+- name: "Install postgres"
+  hosts: database
+  roles:
+    - role: packages_ubuntu
+      packages_ubuntu_install_tower: false
+      packages_ubuntu_install_postgres: true
+      when: ansible_os_family == "Debian"
+    
+    - role: packages_el
+      packages_el_install_tower: false
+      packages_el_install_postgres: true
+      when: ansible_os_family == "RedHat"

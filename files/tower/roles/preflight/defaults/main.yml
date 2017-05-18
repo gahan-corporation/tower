@@ -1,0 +1,5 @@
+---
+required_ram: 1750
+minimum_var_space: 10000000000
+preflight_awx_home: '/var/lib/awx'
+min_open_fds: 4096

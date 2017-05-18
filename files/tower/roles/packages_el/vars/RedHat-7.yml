@@ -1,0 +1,34 @@
+---
+
+el_dependencies: '{{ el7_dependencies }}'
+
+yum_online_repo_files:
+  - 'epel-7.repo'
+  - 'pgdg-94-centos.repo'
+  - 'jlaska-rabbitmq.repo'
+
+yum_repo_keys:
+  - 'RPM-GPG-KEY-EPEL-7'
+  - 'RPM-GPG-KEY-PGDG-94'
+  - 'RPM-GPG-KEY-ansible-release'
+  - 'RPM-GPG-KEY-jlaska-rabbitmq'
+
+tower_bundle_file: tower_bundle_el7.j2
+
+# List of AWS RHUI (RH Update Infrastructure) repositories to enable
+redhat_aws_rhui_repos:
+    - rhui-REGION-rhel-server-optional
+    - rhui-REGION-rhel-server-extras
+
+# List of non-AWS RHUI (RH Update Infrastructure) repositories to enable
+redhat_rhui_repos:
+    - rhui-rhel-7-server-rhui-optional-rpms
+    - rhui-rhel-7-server-rhui-extras-rpms
+
+# List of RHSM (RH Subscription Manager) repositories to enable
+redhat_rhsm_repos:
+    - rhel-7-server-extras-rpms
+    - rhel-7-server-optional-rpms
+    # - 'rhel-{{ ansible_distribution_major_version }}-server-extras-rpms'
+    # - 'rhel-{{ ansible_distribution_major_version }}-server-optional-rpms'
+
