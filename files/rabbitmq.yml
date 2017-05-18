@@ -1,0 +1,4 @@
+---
+rabbitmq_use_long_name: towermq
+...
+# vim: ft=ansible:
