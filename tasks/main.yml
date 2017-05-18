@@ -11,12 +11,13 @@
     user: root
     state: present
     key: "{{ keys.ssh_public_key }}" 
-#- name: 'Install postgres.'
-#  apt:
-#    name: "{{ item }}" 
-#    state: present
-#    update_cache: yes 
-#  with_items:
+- name: 'Install postgres.'
+  apt:
+    name: "{{ item }}" 
+    state: present
+    update_cache: yes 
+  with_items:
+  - language-pack-en_US
 #  - postgresql-9.5
 #  - postgresql-server-dev-all
 - name: 'Update the inventory with a group for Tower.'
