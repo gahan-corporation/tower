@@ -17,7 +17,7 @@
     state: present
     update_cache: yes 
   with_items:
-  - language-pack-en_US
+  - language-pack-US
 #  - postgresql-9.5
 #  - postgresql-server-dev-all
 - name: 'Update the inventory with a group for Tower.'
