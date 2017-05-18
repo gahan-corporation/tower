@@ -1,0 +1,6 @@
+---
+pg_password: password
+admin_password: password
+rabbitmq_password: password
+...
+# vim: ft=ansible:
