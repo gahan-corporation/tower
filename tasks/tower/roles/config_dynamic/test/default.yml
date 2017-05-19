@@ -1,0 +1,58 @@
+---
+- name: Default config
+  hosts: primary
+  roles:
+    - role: config_dynamic
+      config_dynamic_user: "{{ ansible_env.USER }}"
+  tasks:
+    - assert:
+        that:
+          - "config_dynamic_database == 'internal'"
+          - "pg_host == '127.0.0.1'"
+          - "pg_port == 5432"
+
+- name: Postgres socket file for host
+  hosts: primary
+  vars:
+    pg_host_fixture: '/var/run/postgres.sock'
+  roles:
+    - role: config_dynamic
+      config_dynamic_user: "{{ ansible_env.USER }}"
+      pg_host: "{{ pg_host_fixture }}"
+  tasks:
+    - assert:
+        that:
+          - "config_dynamic_database == 'internal'"
+          - "pg_host == '{{ pg_host_fixture }}'"
+
+- name: Databases remote
+  hosts: primary
+  vars:
+    pg_host_fixture: 'mypostgres.mycompany.com'
+    pg_port_fixture: 1234
+  roles:
+    - role: config_dynamic
+      config_dynamic_user: "{{ ansible_env.USER }}"
+      pg_host: "{{ pg_host_fixture }}"
+      pg_port: "{{ pg_port_fixture }}"
+  tasks:
+    - assert:
+        that:
+          - "config_dynamic_database == 'external'"
+          - "pg_host == '{{ pg_host_fixture }}'"
+          - "pg_port == '{{ pg_port_fixture }}'"
+
+#- name: non-root user
+#  hosts: primary
+#  pre_tasks:
+#    - name: lie about what user we are 
+#      set_fact:
+#        ansible_env:
+#          USER: 'gahoosafed'
+#  roles:
+#    - role: config_dynamic
+#  tasks:
+#    - assert:
+#        that:
+#          - "config_dynamic_database == 'external'"
+

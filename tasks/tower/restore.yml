@@ -1,0 +1,41 @@
+---
+- hosts: database
+  gather_facts: false
+  tasks:
+    - name: Temporarily grant createdb role
+      postgresql_user:
+        name: awx
+        role_attr_flags: CREATEDB
+      become: yes
+      become_user: postgres
+
+- hosts: tower:!tower[0]
+  gather_facts: false
+  tasks:
+    - name: Stop Tower services on all nodes
+      command: ansible-tower-service stop
+
+- hosts: tower[0]
+  gather_facts: yes
+  roles:
+    - role: check_config_static
+    - role: config_dynamic
+    - role: restore
+      restore_database: "{{ config_dynamic_database }}"
+      restore_pg_database: "{{ pg_database }}"
+
+- hosts: tower:!tower[0]
+  gather_facts: false
+  tasks:
+    - name: Start Tower services on all nodes
+      command: ansible-tower-service start
+
+- hosts: database
+  gather_facts: false
+  tasks:
+    - name: Revoke createdb role
+      postgresql_user:
+        name: awx
+        role_attr_flags: NOCREATEDB
+      become: yes
+      become_user: postgres

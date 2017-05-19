@@ -6,7 +6,9 @@ script:
 - pip install molecule docker 
 - cd tests 
 - ansible-galaxy install gahan-corporation.tower -p .molecule/roles
-- molecule test 
+- molecule converge
+- molecule verify
+- molecule destroy 
 notifications:
     webhooks: 'https://galaxy.ansible.com/api/v1/notifications/'
 ...

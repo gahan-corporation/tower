@@ -1,0 +1,42 @@
+---
+- name: Create a directory for a database backup to live.
+  file:
+    path: '{{ backup_dir.rstrip("/") }}/restore/'
+    mode: 0775
+    owner: root
+    state: directory
+  notify: Remove the restore directory.
+
+- name: Upload the backup tarball to the server.
+  copy:
+    dest: '{{ backup_dir.rstrip("/") }}/restore/tower-restore.tar.gz'
+    mode: 0664
+    owner: root
+    src: '{{ restore_backup_file }}'
+
+- name: Uncompress the backup file.
+  shell: tar xvfz tower-restore.tar.gz
+  args:
+    chdir: '{{ backup_dir.rstrip("/") }}/restore/'
+
+- name: Stop Web Service.
+  service:
+    name: '{{ web_service_name }}'
+    state: stopped
+  notify: start web service.
+
+- name: Stop supervisor.
+  service:
+    name: '{{ supervisor_service_name }}'
+    state: stopped
+  notify: start supervisord.
+
+- name: Get tower db settings
+  shell: "tower-manage print_settings | grep '^DATABASES'"
+  register: results
+  changed_when: False
+
+- name: Ingest database settings
+  set_fact:
+    tower_db_settings: "{{ results.stdout | regex_replace('DATABASES\\s+= ', '') }}"
+

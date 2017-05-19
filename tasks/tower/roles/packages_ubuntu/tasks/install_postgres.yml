@@ -1,0 +1,8 @@
+---
+- name: Install postgres
+  apt:
+    name: '{{ item }}'
+    state: installed
+  with_items:
+    - postgresql-9.4
+

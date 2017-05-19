@@ -1,0 +1,7 @@
+###############################################################################
+# RABBITMQ SETTINGS
+###############################################################################
+
+CLUSTER_HOST_ID = '{{ rabbitmq_awx_install_host }}'
+CELERY_ROUTES['awx.main.tasks.cluster_node_heartbeat'] = {'queue': CLUSTER_HOST_ID, 'routing_key': CLUSTER_HOST_ID}
+CELERY_ROUTES['awx.main.tasks.purge_old_stdout_files'] = {'queue': CLUSTER_HOST_ID, 'routing_key': CLUSTER_HOST_ID}
