@@ -164,3 +164,5 @@
     - role: misc
       tags: misc
       cluster_host_identifier: "{{ rabbitmq_host|default(ansible_host) }}"
+...
+# vim: ft=ansible:
