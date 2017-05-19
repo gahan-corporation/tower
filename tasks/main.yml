@@ -22,7 +22,7 @@
   template:
     dest: /etc/ansible/hosts
     src: hosts
-- name: 'Start the Tower install process.'
-  include: tower/install.yml
+#- name: 'Start the Tower install process.'
+#  include: tower/install.yml
 ...
 # vim: ft=ansible: 
