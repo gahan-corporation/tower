@@ -13,7 +13,7 @@ docker:
       image: gahancorpcfo/ubuntu-xenial-ansible
       image_version: latest
       hostname: tower
-      port_bindings: 
+      port_bindings:
         8800: 8800
     #- name: pg
     #  ansible_groups:
