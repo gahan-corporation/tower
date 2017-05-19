@@ -22,11 +22,7 @@
   template:
     dest: /etc/ansible/hosts
     src: hosts
-- name: 'Copy the configured tower install playbooks to the target.'
-  copy:
-    src: files/tower
-    dest: /tmp
 - name: 'Run the install playbook.'
-  command: ansible-playbook /tmp/tower/install.yml
+  command: ansible-playbook /etc/ansible/roles/tower/files/tower/install.yml
 ...
 # vim: ft=ansible: 
