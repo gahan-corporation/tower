@@ -22,7 +22,12 @@
   template:
     dest: /etc/ansible/hosts
     src: hosts
-- name: 'Run the install playbook.'
-  command: ansible-playbook /etc/ansible/roles/tower/files/tower/install.yml
+- name: 'Get the working directory.'
+  command: pwd
+  register: result
+- debug:
+    var: result
+#- name: 'Run the install playbook.'
+#  command: ansible-playbook /etc/ansible/roles/tower/files/tower/install.yml
 ...
 # vim: ft=ansible: 
