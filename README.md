@@ -17,7 +17,9 @@ None.
 Dependencies
 ------------
 
-None.
+```yaml
+role: gahan-corporation.postgresql
+```
 
 Example Playbook
 ----------------

@@ -1,7 +1,4 @@
 ---
-# This playbook deploys the Ansible Tower application (database, web and
-# worker daemons) to a single server.
-
 - hosts: tower:database
   gather_facts: false
   roles:
