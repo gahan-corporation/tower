@@ -59,5 +59,6 @@ galaxy_info:
 
 dependencies:
   - gahan-corporation.postgresql 
+  - gahan-corporation.rabbitmq
 ...
 # vim: ft=ansible:
