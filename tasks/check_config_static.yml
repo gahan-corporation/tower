@@ -47,3 +47,5 @@
   tags:
     - check_config_static_ha_pg
     - check_config_static_ha
+...
+# vim: ft=ansible:
