@@ -1,22 +1,4 @@
 ---
-- hosts: tower:database
-  gather_facts: false
-  roles:
-    - role: check_config_static
-      check_config_static_required_vars:
-        - tower_package_name
-        - tower_package_version
-        - tower_package_release
-    - role: config_dynamic
-
-- name: "Group nodes by OS distribution"
-  hosts: all
-  gather_facts: true
-  tasks:
-    - name: group hosts by distribution
-      group_by: 
-        key: "{{ ansible_distribution }}-{{ ansible_distribution_version }}"
-      changed_when: false
 
 - name: "Group supported distributions"
   hosts: "RedHat-7*:CentOS-7*:Ubuntu-14.04:Ubuntu-16.04:OracleLinux-7*"

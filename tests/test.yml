@@ -2,5 +2,21 @@
 - hosts: all
   roles:
     - gahan-corporation.tower
+- hosts: tower:database
+  roles:
+    - role: check_config_static
+      check_config_static_required_vars:
+        - tower_package_name
+        - tower_package_version
+        - tower_package_release
+    - role: config_dynamic
+- name: "Group nodes by OS distribution"
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: group hosts by distribution
+      group_by: 
+        key: "{{ ansible_distribution }}-{{ ansible_distribution_version }}"
+      changed_when: false
 ...
 # vim: ft=ansible:
