@@ -24,6 +24,7 @@
     src: hosts
 - name: 'Check the static configuration.'
   include: check_config_static.yml
+  tag: check_config_static
 #- name: 'Start the Tower install process.'
 #  include: tower/install.yml
 ...
