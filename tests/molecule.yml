@@ -15,12 +15,14 @@ docker:
       hostname: tower
       port_bindings:
         8800: 8800
-    #- name: pg
-    #  ansible_groups:
-    #    - db
-    #  image: gahancorpcfo/ubuntu-xenial-ansible
-    #  image_version: latest
-    #  hostname: tower
+    - name: pg 
+      ansible_groups:
+        - database 
+      image: gahancorpcfo/ubuntu-xenial-ansible
+      image_version: latest
+      hostname: pg 
+      port_bindings:
+        5432: 5432
 verifier:
   name: testinfra
   options:
