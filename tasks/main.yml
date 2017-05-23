@@ -25,6 +25,21 @@
 - name: 'Check the static configuration.'
   include: check_config_static.yml
   tag: check_config_static
+#- hosts: tower:database
+#  roles:
+#    - role: check_config_static
+#      check_config_static_required_vars:
+#        - tower_package_name
+#        - tower_package_version
+#        - tower_package_release
+#- name: "Group nodes by OS distribution"
+#  hosts: all
+#  gather_facts: true
+#  tasks:
+#    - name: group hosts by distribution
+#      group_by: 
+#        key: "{{ ansible_distribution }}-{{ ansible_distribution_version }}"
+#      changed_when: false
 #- name: 'Start the Tower install process.'
 #  include: tower/install.yml
 ...
