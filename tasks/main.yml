@@ -22,6 +22,8 @@
   template:
     dest: /etc/ansible/hosts
     src: hosts
+- name: 'Check the static configuration.'
+  include: check_config_static.yml
 #- name: 'Start the Tower install process.'
 #  include: tower/install.yml
 ...
