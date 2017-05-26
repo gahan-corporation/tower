@@ -1,4 +1,6 @@
 ---
+- debug:
+    var: hostvars[inventory_hostname]
 - name: Ensure expected variables are defined
   fail: 
     msg: "{{ item }} value missing and is required"
