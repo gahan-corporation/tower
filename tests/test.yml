@@ -3,7 +3,7 @@
   tasks:
   - debug:
       var: hostvars
-- hosts: tower 
+- hosts: tower
   roles:
     - tower
 ...
