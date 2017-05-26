@@ -1,0 +1,9 @@
+---
+- hosts: primary:secondary
+  gather_facts: false
+  vars:
+    pg_host: 'pg.mycompany.com'
+    pg_port: 8135
+  roles:
+    - role: check_config_static
+

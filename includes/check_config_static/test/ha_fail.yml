@@ -1,0 +1,14 @@
+- include: "includes/add_secondary_hosts.yml"
+
+- hosts: localhost
+  gather_facts: false
+  roles:
+    - role: check_config_static
+      check_config_static_ignore_errors: true
+  tasks:
+    - name: should fail when service connection info does not exist and secondary nodes exist
+      tags: 
+        - check_config_static_ha_pg
+      assert:
+        that:
+          - check_config_static_results.failed == true
