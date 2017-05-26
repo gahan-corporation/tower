@@ -1,5 +1,10 @@
 ---
 ansible:
+  group_vars:
+    tower:
+      tower_package_name: 'ansible-tower'
+      tower_package_version: '3.1.3'
+      tower_package_release: '1'
   playbook: test.yml
 dependency:
   name: galaxy
@@ -7,20 +12,24 @@ driver:
   name: docker
 docker:
   containers:
+    - name: postgres
+      ansible_groups:
+      - tower
+      image: gahancorpcfo/postgres
+      image_version: latest
+      hostname: postgres
+      port_bindings:
+        5432: 5433
     - name: tower
       ansible_groups:
-        - ansible
+      - tower
       image: gahancorpcfo/ubuntu-xenial-ansible
       image_version: latest
       hostname: tower
+      links:
+        postgres: postgres
       port_bindings:
         8800: 8800
-    #- name: pg
-    #  ansible_groups:
-    #    - db
-    #  image: gahancorpcfo/ubuntu-xenial-ansible
-    #  image_version: latest
-    #  hostname: tower
 verifier:
   name: testinfra
   options:

@@ -1,7 +1,0 @@
----
-
-- name: Start Memcached and enable it at startup
-  service:
-    name: memcached
-    state: started
-    enabled: yes

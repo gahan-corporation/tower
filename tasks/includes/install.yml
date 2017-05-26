@@ -1,0 +1,22 @@
+---
+- name: 'Include tasks for checking static config.'
+  include: ../includes/check_config_static/tasks/main.yml
+  check_config_static_required_vars:
+  - tower_package_name
+  - tower_package_version
+  - tower_package_release
+- name: 'Group hosts by distribution.'
+  group_by:
+    key: "{{ ansible_distribution }}-{{ ansible_distribution_version }}"
+  changed_when: false
+- name: 'Group supported distributions.'
+  group_by:
+    key: "supported"
+  changed_when: false
+- debug:
+    var: hostvars
+#- name: 'Fail unsupported distributions.'
+#  fail:
+#    msg: "{{ ansible_distribution }} {{ ansible_distribution_version }} is not a supported OS for a Tower installation.  Supported OSes include Red Hat Enterprise Linux 7, CentOS 7, or Ubuntu 14.04/16.04."
+...
+# vim: ft=ansible:

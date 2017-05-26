@@ -1,6 +1,10 @@
 ---
 - hosts: all
+  tasks:
+  - debug:
+      var: hostvars
+- hosts: tower
   roles:
-    - gahan-corporation.tower
+    - tower
 ...
 # vim: ft=ansible:
