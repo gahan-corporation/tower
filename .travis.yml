@@ -7,7 +7,7 @@ script:
 - docker pull gahancorpcfo/postgres:latest
 - docker tag gahancorpcfo/postgres:latest molecule_local/gahancorpcfo/postgres:latest
 - cd tests 
-- ansible-galaxy install git+https://github.com/gahan-corporation/tower.git -p .molecule/roles
+- ansible-galaxy install git+https://github.com/gahan-corporation/tower.git,v0.1.0 -p .molecule/roles
 - molecule converge
 - molecule verify
 - molecule destroy 
