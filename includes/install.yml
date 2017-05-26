@@ -1,6 +1,7 @@
 ---
 - name: 'Include variables for tower.'
-  include_vars: tower.yml
+  include_vars: 
+    file: tower.yml
 - name: 'Include tasks for checking static config.'
   include: includes/check_config_static/tasks/main.yml
   check_config_static_required_vars:
