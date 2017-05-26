@@ -5,13 +5,16 @@
   - tower_package_name
   - tower_package_version
   - tower_package_release
-- name: group hosts by distribution
+- name: 'Group hosts by distribution.' 
   group_by: 
     key: "{{ ansible_distribution }}-{{ ansible_distribution_version }}"
   changed_when: false
-- name: group hosts for supported distributions
-  group_by: key="supported"
+- name: 'Group supported distributions.' 
+  group_by: 
+    key: "supported"
   changed_when: false
+- debug:
+    var: hostvars
 - name: fail for unsupported distribution
   fail: 
     msg: "{{ ansible_distribution }} {{ ansible_distribution_version }} is not a supported OS for a Tower installation.  Supported OSes include Red Hat Enterprise Linux 7, CentOS 7, or Ubuntu 14.04/16.04."
