@@ -1,6 +1,6 @@
 ---
 - name: 'Include tasks for checking static config.'
-  include: includes/check_config_static/tasks/main.yml
+  include: tasks/includes/check_config_static/tasks/main.yml
   check_config_static_required_vars:
   - tower_package_name
   - tower_package_version
