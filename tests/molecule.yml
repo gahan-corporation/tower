@@ -9,18 +9,22 @@ docker:
   containers:
     - name: tower
       ansible_groups:
-        - ansible
+        - tower 
       image: gahancorpcfo/ubuntu-xenial-ansible
       image_version: latest
       hostname: tower
+      links:
+        postgres: postgres
       port_bindings:
         8800: 8800
     - name: postgres 
       ansible_groups:
-        - 'tower:database' 
-      image: gahancorpcfo/ubuntu-xenial-ansible
+        - tower 
+      image: gahancorpcfo/postgres
       image_version: latest
       hostname: postgres 
+      links: 
+        tower: tower
       port_bindings:
         5432: 5432
 verifier:
