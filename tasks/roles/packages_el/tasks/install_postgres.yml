@@ -1,7 +1,0 @@
----
-- name: Install postgres
-  yum:
-    name: '{{ postgresql_server_package }}'
-    enablerepo: "{{ tower_enable_repo|default(omit) }}"
-    state: installed
-
