@@ -10,15 +10,15 @@
   authorized_key:
     user: root
     state: present
-    key: "{{ keys.ssh_public_key }}" 
+    key: "{{ keys.ssh_public_key }}"
 - name: 'Install the missing language pack.'
   apt:
-    name: "{{ item }}" 
+    name: "{{ item }}"
     state: present
     update_cache: yes 
   with_items:
   - language-pack-en
-#- name: 'Start the Tower install process.'
-#  include: tower/install.yml
+- name: 'Start the Tower install process.'
+  include: includes/install.yml
 ...
-# vim: ft=ansible: 
+# vim: ft=ansible:
