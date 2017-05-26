@@ -1,6 +1,6 @@
 ---
-pg_host: postgres
-pg_port: 5432
+pg_host: 'postgres'
+pg_port: '5432'
 pg_password: 'notgod'
 admin_password: 'alsonotgod'
 rabbitmq_password: 'rabbit'
