@@ -1,0 +1,17 @@
+---
+apt_keys:
+    - url: 'https://www.postgresql.org/media/keys/ACCC4CF8.asc'
+    - url: 'https://www.rabbitmq.com/rabbitmq-release-signing-key.asc'
+    - url: 'https://releases.ansible.com/keys/442667A9.asc'
+    - url: 'http://nginx.org/keys/nginx_signing.key'
+
+apt_repos:
+    - 'ppa:ansible/ansible'
+    - 'ppa:ansible/bubblewrap'
+    - 'deb http://download.postgresql.org/pub/repos/apt/ trusty-pgdg main'
+    - 'deb http://www.rabbitmq.com/debian/ testing main'
+    - 'deb http://nginx.org/packages/ubuntu/ trusty nginx'
+
+ubuntu_dependencies:
+    - 'python-psycopg2'
+    - 'acl'

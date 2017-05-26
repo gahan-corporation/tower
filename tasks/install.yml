@@ -1,0 +1,19 @@
+---
+
+- name: "Group supported distributions"
+  hosts: "RedHat-7*:CentOS-7*:Ubuntu-14.04:Ubuntu-16.04:OracleLinux-7*"
+  gather_facts: false
+  tasks:
+  - name: group hosts for supported distributions
+    group_by: key="supported"
+    changed_when: false
+
+- name: "Ensure all node OS distributions are supported"
+  hosts: "!supported"
+  gather_facts: false
+  tasks:
+  - name: fail for unsupported distribution
+    fail: 
+      msg: "{{ ansible_distribution }} {{ ansible_distribution_version }} is not a supported OS for a Tower installation.  Supported OSes include Red Hat Enterprise Linux 7, CentOS 7, or Ubuntu 14.04/16.04."
+...
+# vim: ft=ansible:

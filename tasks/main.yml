@@ -23,7 +23,34 @@
     update_cache: yes 
   with_items:
   - language-pack-en
+<<<<<<< HEAD
 - name: 'Start the Tower install process.'
   include: includes/install.yml
+=======
+- name: 'Update the inventory with a group for Tower.'
+  template:
+    dest: /etc/ansible/hosts
+    src: hosts
+- name: 'Check the static configuration.'
+  include: check_config_static.yml
+  tag: check_config_static
+#- hosts: tower:database
+#  roles:
+#    - role: check_config_static
+#      check_config_static_required_vars:
+#        - tower_package_name
+#        - tower_package_version
+#        - tower_package_release
+#- name: "Group nodes by OS distribution"
+#  hosts: all
+#  gather_facts: true
+#  tasks:
+#    - name: group hosts by distribution
+#      group_by: 
+#        key: "{{ ansible_distribution }}-{{ ansible_distribution_version }}"
+#      changed_when: false
+#- name: 'Start the Tower install process.'
+#  include: tower/install.yml
+>>>>>>> d0c0d3835f6a0939b19c4ef79f7659f819671ae5
 ...
 # vim: ft=ansible:

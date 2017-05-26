@@ -1,0 +1,12 @@
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - add_host:
+        name: "{{ item }}" 
+        groups: 'secondary'
+        ansible_connection: 'local'
+      with_items:
+        - tower1.mycompany.com
+        - tower2.mycompany.com
+      tags: add_secondary
+

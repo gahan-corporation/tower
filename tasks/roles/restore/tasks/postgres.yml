@@ -1,0 +1,22 @@
+---
+# use dbname 'template1' to connect to the remote database
+# Since we drop the database as part of our backup/restore, we can't use the awx
+# database for this command.
+- name: Perform a PostgreSQL restore (external).
+  shell: "psql --host='{{ tower_db_settings.default.HOST }}' --port={{ tower_db_settings.default.PORT }} --username='{{ tower_db_settings.default.USER  }}' --dbname='template1' < ./tower.db"
+  args:
+    chdir: '{{ backup_dir.rstrip("/") }}/restore/'
+  environment:
+    PGPASSWORD: "{{ tower_db_settings.default.PASSWORD }}"
+  no_log: True
+  when: "restore_database == 'external'"
+
+- name: Perform a PostgreSQL restore (internal).
+  shell: "psql --dbname='template1' < tower.db"
+  args:
+    chdir: '{{ backup_dir.rstrip("/") }}/restore/'
+  become_user: postgres
+  no_log: True
+  become: True
+  when: "restore_database == 'internal'"
+
