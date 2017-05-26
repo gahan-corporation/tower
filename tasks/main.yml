@@ -1,5 +1,4 @@
 ---
-- include_vars: tower.yml
 - name: 'Make sure root user has ssh keys.'
   user:
     name: root
