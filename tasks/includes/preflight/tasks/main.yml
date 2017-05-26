@@ -74,3 +74,5 @@
   fail:
     msg: 'Please set rabbitmq_password in the inventory file before running setup'
   when: "rabbitmq_password|default('') == ''"
+...
+# vim: ft=ansible:
