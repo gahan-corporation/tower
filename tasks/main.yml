@@ -18,10 +18,6 @@
     update_cache: yes 
   with_items:
   - language-pack-en
-- name: 'Update the inventory with a group for Tower.'
-  template:
-    dest: /etc/ansible/hosts
-    src: hosts
 #- name: 'Start the Tower install process.'
 #  include: tower/install.yml
 ...
