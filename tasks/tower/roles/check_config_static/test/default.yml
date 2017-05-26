@@ -1,6 +1,0 @@
----
-- hosts: primary:secondary
-  gather_facts: false
-  roles:
-    - role: check_config_static
-
