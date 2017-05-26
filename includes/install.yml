@@ -15,8 +15,8 @@
   changed_when: false
 - debug:
     var: hostvars
-- name: 'Fail unsupported distributions.' 
-  fail: 
-    msg: "{{ ansible_distribution }} {{ ansible_distribution_version }} is not a supported OS for a Tower installation.  Supported OSes include Red Hat Enterprise Linux 7, CentOS 7, or Ubuntu 14.04/16.04."
+#- name: 'Fail unsupported distributions.' 
+#  fail: 
+#    msg: "{{ ansible_distribution }} {{ ansible_distribution_version }} is not a supported OS for a Tower installation.  Supported OSes include Red Hat Enterprise Linux 7, CentOS 7, or Ubuntu 14.04/16.04."
 ...
 # vim: ft=ansible:
