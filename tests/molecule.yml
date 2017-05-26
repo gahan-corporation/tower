@@ -7,6 +7,14 @@ driver:
   name: docker
 docker:
   containers:
+    - name: postgres 
+      ansible_groups:
+        - tower 
+      image: gahancorpcfo/postgres
+      image_version: latest
+      hostname: postgres 
+      port_bindings:
+        5432: 5432
     - name: tower
       ansible_groups:
         - tower 
@@ -17,16 +25,6 @@ docker:
         postgres: postgres
       port_bindings:
         8800: 8800
-    - name: postgres 
-      ansible_groups:
-        - tower 
-      image: gahancorpcfo/postgres
-      image_version: latest
-      hostname: postgres 
-      links: 
-        tower: tower
-      port_bindings:
-        5432: 5432
 verifier:
   name: testinfra
   options:
