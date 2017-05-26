@@ -12,12 +12,12 @@ driver:
   name: docker
 docker:
   containers:
-    - name: postgres 
+    - name: postgres
       ansible_groups:
-      - tower 
+      - tower
       image: gahancorpcfo/postgres
       image_version: latest
-      hostname: postgres 
+      hostname: postgres
       port_bindings:
         5432: 5432
     - name: tower
