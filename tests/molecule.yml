@@ -30,17 +30,6 @@ docker:
         postgres: postgres
       port_bindings:
         8800: 8800
-<<<<<<< HEAD
-=======
-    - name: pg 
-      ansible_groups:
-        - database 
-      image: gahancorpcfo/ubuntu-xenial-ansible
-      image_version: latest
-      hostname: pg 
-      port_bindings:
-        5432: 5432
->>>>>>> d0c0d3835f6a0939b19c4ef79f7659f819671ae5
 verifier:
   name: testinfra
   options:
