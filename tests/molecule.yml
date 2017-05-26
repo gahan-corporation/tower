@@ -14,7 +14,7 @@ docker:
   containers:
     - name: postgres 
       ansible_groups:
-        - tower 
+      - tower 
       image: gahancorpcfo/postgres
       image_version: latest
       hostname: postgres 
@@ -22,8 +22,7 @@ docker:
         5432: 5432
     - name: tower
       ansible_groups:
-        - tower:
-          - database 
+      - tower
       image: gahancorpcfo/ubuntu-xenial-ansible
       image_version: latest
       hostname: tower
