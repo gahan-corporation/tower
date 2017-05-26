@@ -18,6 +18,7 @@
     update_cache: yes 
   with_items:
   - language-pack-en
+- include_vars: vars/tower.yml
 - name: 'Start the Tower install process.'
   include: includes/install.yml
 ...
