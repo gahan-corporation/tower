@@ -16,6 +16,13 @@
     user: root
     state: present
     key: "{{ keys.ssh_public_key }}"
+- name: "Set some required values for the hosts."
+  set_fact:
+    pg_host: 'postgres'
+    pg_port: '5432'
+    pg_password: 'notgod'
+    admin_password: 'alsonotgod'
+    rabbitmq_password: 'rabbit'
 - name: 'Run the check static config.'
   include: ../tasks/check_config_static.yml
 ...
