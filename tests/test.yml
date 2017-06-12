@@ -6,7 +6,7 @@
 - hosts: tower
   roles:
     - tower
-- hosts: database
+- hosts: postgres 
   tasks:
     - name: "Run the database install on the database server."
       include: ../tasks/postgres.yml
