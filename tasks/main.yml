@@ -27,7 +27,5 @@
   include: ../tasks/check_config_static.yml
 - name: "Run the preflight tests."
   include: ../tasks/preflight.yml
-- name: "Install postgres on the databse instance."
-  include: ../tasks/postgres.yml
 ...
 # vim: ft=ansible:
