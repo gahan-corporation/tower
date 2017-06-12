@@ -6,6 +6,7 @@ check_config_static_required_vars:
 - pg_password
 - admin_password
 - rabbitmq_password
+min_open_fds: '100'
 pg_host: 'postgres'
 pg_port: '5432'
 pg_password: 'notgod'
