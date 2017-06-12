@@ -24,6 +24,6 @@
   with_items:
   - language-pack-en
 - name: 'Run the check static config.'
-  include: includes/install.yml
+  include: check_static_config.yml
 ...
 # vim: ft=ansible:
