@@ -9,6 +9,11 @@
     state: present
 - name: "Install postgresql on apt systems."
   apt:
-    name: postgresql-9.5
+    name: "{{ item }}" 
+    update_cache: yes
+    state: present
+  with_items:
+    - postgresql 
+    - postgresql-contrib
 ...
 # vim: ft=ansible:
