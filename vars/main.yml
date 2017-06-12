@@ -1,4 +1,5 @@
 ---
+admin_password: 'alsonotgod'
 check_config_static_required_vars:
 - pg_host
 - pg_port
@@ -8,7 +9,7 @@ check_config_static_required_vars:
 pg_host: 'postgres'
 pg_port: '5432'
 pg_password: 'notgod'
-admin_password: 'alsonotgod'
 rabbitmq_password: 'rabbit'
+required_ram: '1000'
 ...
 # vim: ft=ansible: 
