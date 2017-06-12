@@ -6,5 +6,9 @@
 - hosts: tower
   roles:
     - tower
+#- hosts: database
+#  tasks:
+#    - name: "Run the database install on the database server."
+#      include: ../tasks/postgres.yml
 ...
 # vim: ft=ansible:
