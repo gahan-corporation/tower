@@ -1,16 +1,22 @@
 ---
 sudo: required
+language: python
 services:
-- docker
+  - docker
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y docker-engine
+install:
+  - pip install molecule docker
 script:
-- pip install molecule docker 
-- docker pull gahancorpcfo/postgres:latest
-- docker tag gahancorpcfo/postgres:latest molecule_local/gahancorpcfo/postgres:latest
-- cd tests 
-- ansible-galaxy install git+https://github.com/gahan-corporation/tower.git,v0.1.0 -p .molecule/roles
-- molecule converge
-- molecule verify
-- molecule destroy 
+  - docker pull gahancorpcfo/postgres:latest
+  - docker tag gahancorpcfo/postgres:latest molecule_local/gahancorpcfo/postgres:latest
+  - cd tests 
+  - ansible-galaxy install git+https://github.com/gahan-corporation/tower.git,v0.1.0 -p .molecule/roles
+  - molecule syntax
+  - molecule converge
+  #- molecule verify
+  - molecule destroy 
 notifications:
     webhooks: 'https://galaxy.ansible.com/api/v1/notifications/'
 ...

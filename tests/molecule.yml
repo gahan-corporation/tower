@@ -20,7 +20,7 @@ docker:
       hostname: postgres
       port_bindings:
         5432: 5433
-    - name: tower
+    - name: tower-main
       ansible_groups:
       - tower
       image: gahancorpcfo/ubuntu-xenial-ansible
