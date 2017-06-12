@@ -1,0 +1,6 @@
+---
+- name: "Install postgresql on apt systems."
+  apt:
+    name: postgresql-9.5
+...
+# vim: ft=ansible:
