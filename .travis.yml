@@ -13,8 +13,9 @@ script:
   - docker tag gahancorpcfo/postgres:latest molecule_local/gahancorpcfo/postgres:latest
   - cd tests 
   - ansible-galaxy install git+https://github.com/gahan-corporation/tower.git,v0.1.0 -p .molecule/roles
+  - molecule syntax
   - molecule converge
-  - molecule verify
+  #- molecule verify
   - molecule destroy 
 notifications:
     webhooks: 'https://galaxy.ansible.com/api/v1/notifications/'
