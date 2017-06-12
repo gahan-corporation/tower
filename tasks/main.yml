@@ -16,13 +16,6 @@
     user: root
     state: present
     key: "{{ keys.ssh_public_key }}"
-- name: 'Install the missing language pack.'
-  apt:
-    name: "{{ item }}"
-    state: present
-    update_cache: yes
-  with_items:
-  - language-pack-en
 - name: 'Run the check static config.'
   include: ../tasks/check_config_static.yml
 ...
