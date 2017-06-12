@@ -1,8 +1,5 @@
 ---
-- name: Install postgres
-  yum:
-    name: '{{ postgresql_server_package }}'
-    enablerepo: "{{ tower_enable_repo|default(omit) }}"
-    state: installed
+- name: "Maybe we include yum support at some point."
+  include: "postgres/{{ ansible_pkg_mgr }}.yml"
 ...
 # vim: ft=ansible:
