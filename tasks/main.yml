@@ -25,5 +25,7 @@
     rabbitmq_password: 'rabbit'
 - name: 'Run the check static config.'
   include: ../tasks/check_config_static.yml
+- name: "Run the preflight tests."
+  include: ../tasks/preflight.yml
 ...
 # vim: ft=ansible:
