@@ -54,4 +54,5 @@
     name: '{{ nginx_init_name }}'
     state: started
     enabled: yes
-
+...
+# vim: ft=ansible:
