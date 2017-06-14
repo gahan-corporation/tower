@@ -5,7 +5,7 @@
       var: hostvars
 - hosts: tower
   roles:
-    - tower
+    - gahan-corporation.tower
 - hosts: postgres 
   tasks:
     - name: "Run the database install on the database server."
