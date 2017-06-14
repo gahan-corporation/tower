@@ -5,6 +5,11 @@
   ignore_errors: true
   changed_when: false
 
+- name: "Create /etc/tower."
+  file:
+    dest: /etc/tower
+    state: directory
+
 - name: Open up permissions on httpd.
   seboolean:
     name: '{{item}}'
