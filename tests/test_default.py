@@ -30,7 +30,7 @@ def test_ansible_is_installed(File):
 
 def test_tower_downloaded(File):
     """Test for the presence of a Tower download."""
-    tower_directory = File('/tmp/ansible')
+    tower_directory = File('/opt/tower')
 
     if not tower_directory.exists:
-        raise AssertionError() 
+        raise AssertionError()
