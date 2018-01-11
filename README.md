@@ -1,5 +1,6 @@
 Tower Installation
 ==================
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/bd70ba994a2644ae93316bdfc4fbc685)](https://www.codacy.com/app/gahancorpcfo/tower?utm_source=github.com&utm_medium=referral&utm_content=gahan-corporation/tower&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/gahan-corporation/tower.svg?branch=master)](https://travis-ci.org/gahan-corporation/tower)
 
 Installs the latest version of Ansible Tower onto an Ubuntu 16.04 target.
