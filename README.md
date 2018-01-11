@@ -4,6 +4,8 @@ Tower Installation
 
 Installs the latest version of Ansible Tower onto an Ubuntu 16.04 target.
 
+[Full of Helpful Advice](https://stackoverflow.com/questions/1885251/how-do-i-tell-pylint-its-a-variable-not-a-constant-to-stop-message-c0103)
+
 Requirements
 ------------
 

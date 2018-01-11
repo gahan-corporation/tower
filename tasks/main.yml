@@ -27,7 +27,7 @@
   include: ../tasks/check_config_static.yml
 - name: "Run the preflight tests."
   include: ../tasks/preflight.yml
-#- name: "Install nginx."
-#  include: ../tasks/nginx/nginx.yml 
+- name: "Install nginx."
+  include: ../tasks/nginx/nginx.yml
 ...
 # vim: ft=ansible:

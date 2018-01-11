@@ -5,6 +5,11 @@
   ignore_errors: true
   changed_when: false
 
+- name: "Create /etc/tower."
+  file:
+    dest: /etc/tower
+    state: directory
+
 - name: Open up permissions on httpd.
   seboolean:
     name: '{{item}}'
@@ -19,7 +24,8 @@
   args:
     creates: /etc/tower/tower.cert
   notify:
-    - restart nginx
+  - nginx
+
 
 - name: Configure file permissions on certificate file.
   file:
@@ -54,4 +60,5 @@
     name: '{{ nginx_init_name }}'
     state: started
     enabled: yes
-
+...
+# vim: ft=ansible:

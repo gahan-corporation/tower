@@ -1,3 +1,5 @@
+"""Module for tests related to tower."""
+# pylint: disable-msg=C0103
 import testinfra.utils.ansible_runner
 
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
@@ -5,25 +7,14 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 def test_hosts_file(File):
-    f = File('/etc/hosts')
+    """Test for the presence of a hosts file."""
+    hosts_file = File('/etc/hosts')
 
-    assert f.exists
+    if not hosts_file.exists:
+        raise AssertionError()
+
     assert f.user == 'root'
     assert f.group == 'root'
-
-
-def test_hosts_file(File):
-    f = File('/etc/hosts')
-
-    assert f.exists
-    assert f.user == 'root'
-    assert f.group == 'root'
-
-
-def test_java_is_installed(File):
-    java = File('/usr/lib/jvm/java-8-oracle')
-
-    assert java.exists
 
 
 def test_ansible_is_installed(File):

@@ -7,5 +7,6 @@
         - '{{ ansible_distribution }}.yml'                                              # CentOS
         - '{{ ansible_os_family }}.yml'                                                 # RedHat
         - 'default.yml'
-      paths: '../vars'
-
+      paths: '../tasks/nginx/vars'
+...
+# vim: ft=ansible:

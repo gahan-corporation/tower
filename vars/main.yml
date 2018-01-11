@@ -1,4 +1,5 @@
 ---
+codacy_project_token: bd70ba994a2644ae93316bdfc4fbc685
 admin_password: 'alsonotgod'
 check_config_static_required_vars:
 - pg_host
@@ -7,6 +8,7 @@ check_config_static_required_vars:
 - admin_password
 - rabbitmq_password
 min_open_fds: '100'
+nginx_exec_vars_only: false
 pg_host: 'postgres'
 pg_port: '5432'
 pg_password: 'notgod'
