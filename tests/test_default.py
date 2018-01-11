@@ -13,17 +13,24 @@ def test_hosts_file(File):
     if not hosts_file.exists:
         raise AssertionError()
 
-    assert f.user == 'root'
-    assert f.group == 'root'
+    if not hosts_file.user == 'root':
+        raise AssertionError()
+
+    if not hosts_file.group == 'root':
+        raise AssertionError()
 
 
 def test_ansible_is_installed(File):
-    f = File('/usr/bin/ansible')
+    """Test for the presence of an Ansible executable."""
+    ansible_file = File('/usr/bin/ansible')
 
-    assert f.exists
+    if not ansible_file.exists:
+        raise AssertionError()
 
 
 def test_tower_downloaded(File):
-    f = File('/tmp/ansible')
+    """Test for the presence of a Tower download."""
+    tower_directory = File('/tmp/ansible')
 
-    assert f.exists
+    if not tower_directory.exists:
+        raise AssertionError() 
